@@ -1,12 +1,14 @@
 from pymongo import MongoClient
 import os
 
-DB_USERNAME = os.environ['DB_USERNAME']
-DB_PASSWORD = os.environ['DB_PASSWORD']
+MONGO_URI = os.environ['MONGO_URI']
 
 print("Connecting to database...")
-client = MongoClient(f'mongodb://{DB_USERNAME}:{DB_PASSWORD}@ds331568.mlab.com:31568/python-mongo-test?retryWrites=false')
-db = client["python-mongo-test"]
+
+client = MongoClient(MONGO_URI)
+db = client.test
+
+db = client["python-mongo-cafes"]
 
 cafe = {
         "name": "Charlie and Franks",
