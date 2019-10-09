@@ -108,6 +108,21 @@ cafes.delete_one({
 
 
 
+
+
+#### Note on using `_id`: 
+
+Though it may appear to be a string of the nature `5d9d6e23fc2bc4ce65953dd4` is is not, it is in fact `ObjectId('5d9d6e23fc2bc4ce65953dd4')`.
+
+You can get this by:
+
+```python
+from bson.objectid import ObjectId
+cafe_id = ObjectId('5d9d6e23fc2bc4ce65953dd4')
+```
+
+Then you will be able to Read, update, and delete the object with the id of `5d9d6e23fc2bc4ce65953dd4`.
+
 ### 3. Make a flask application. It will connect to the database, create some crud.
 
 
