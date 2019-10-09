@@ -62,6 +62,50 @@ As mentioned above the examle code provided will create a database named 'python
 
 I recommend you experiment with creating multiple collections etc.
 
+The important thing to note in the script are
+
+```python
+import os
+from pymongo import MongoClient
+
+client = MongoClient(MONGO_URI) # Connect to Cluster
+db = client["python-mongo-cafes"] # Selecting the database
+cafes = db.cafes # Selecting the cafes collection
+```
+
+1. Connecting to the Cluster, then selecting out the database and collection we want. Note: if the database or collection does not exist it will be created by these steps.
+
+```python
+cafe = {
+        "name": "Charlie and Franks",
+        "coffee": "Good",
+        "employees": 16
+        }
+cafe_id = cafes.insert_one(cafe).inserted_id
+```
+
+2. This creates a **cafe** dict then inserts it into the **cafes** collection. It also obtains the `id` which the database assignes to the **cafe** when it is successfully stored in the database.
+
+```python
+foundCafe = cafes.find_one({"coffee":"Good"})
+```
+
+3. This selects a single cafe where the coffee field is equal to the string "Good". For finding by id you would want to use the field `_id`.
+
+```python
+allCafes = list(cafes.find())
+```
+
+5. Getting all cafes as a list.
+
+```python
+cafes.delete_one({
+    "name":"Charlie and Franks"
+    })
+```
+
+6. Once again you are able to select a single cafe by its field. You can use `_id` to select its id.
+
 
 
 ### 3. Make a flask application. It will connect to the database, create some crud.

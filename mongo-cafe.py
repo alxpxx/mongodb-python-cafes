@@ -24,8 +24,8 @@ db = client["python-mongo-cafes"]
 
 cafe = {
         "name": "Charlie and Franks",
-        "Coffee": "Good",
-        "Employees": 16
+        "coffee": "Good",
+        "employees": 16
         }
 cafes = db.cafes
 
@@ -33,12 +33,21 @@ print("Adding new cafe...")
 
 # Inserts the cafe and records the ID that was assigned to it
 cafe_id = cafes.insert_one(cafe).inserted_id
-print(cafe_id)
+print("Cafe id: \n", cafe_id, "\n")
 
-foundCafe = cafes.find_one({"Coffee":"Good"})
-print(foundCafe)
+# The single cafe we added.
+foundCafe = cafes.find_one({"coffee":"Good"})
+print("The cafe we added: \n", foundCafe, "\n")
 
-input("Go see if the document is on the database, then press enter to continue...")
+# Update a cafes employees
+print('changing employees to 20...\n')
+cafes.update_one({'_id': cafe_id}, {'$set': {'employees': 20}})
+
+# A list of all cafes in the cafes collection.
+allCafes = list(cafes.find())
+print("The whole list of cafes: \n", allCafes, "\n")
+
+input("Go see if the document is on the database, then press enter to continue...\n")
 print("Deleting Cafe")
 
 cafes.delete_one({
@@ -46,4 +55,5 @@ cafes.delete_one({
     })
 
 print(db.list_collection_names())
+print("Done")
 
