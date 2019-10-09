@@ -1,7 +1,3 @@
-
-
-
-
 # Environment Variables & Hosted Databases
 
 Recently you would have practiced creating a CRUDy RESTful API with your Starship Review app! The part of that exercise that most significantly diverged from a real world REST API was that it used a single `db.json` file as a database. In the real world this would more likely be a SQL database (MySQL, PostSQL), a NoSQL database (MongoDB), or a cache (Redis). As we will be covering SQL and caches later down the track, why not attempt to get started on MongoDB?
@@ -10,7 +6,7 @@ Recently you would have practiced creating a CRUDy RESTful API with your Starshi
 
 This will give us time to focus on the DevOps of setting up and connecting to a database, as well as give a viable approach for any hobby applications or side projects you might be thinking of.
 
-### 1. Create a mLab mongoDB database
+### 1. Create a mongoDB Atlas database
 
 
 
